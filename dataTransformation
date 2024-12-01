@@ -103,9 +103,9 @@ results['awayScore'] = results['awayScore'].astype(int)
 
 # Zapis plików docelowych
 
-results.to_csv(r"/Users/michal/Desktop/footballDataTransformed/factsResults.csv")
-goals.to_csv(r"/Users/michal/Desktop/footballDataTransformed/factsGoals.csv")
-teams.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimTeams.csv")
-locations.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimLocations.csv")
-tournaments.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimTournaments.csv")
-dates.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimDates.csv")
+results.to_csv(r"/Users/michal/Desktop/footballDataTransformed/factsResults.csv", index= False)
+goals.to_csv(r"/Users/michal/Desktop/footballDataTransformed/factsGoals.csv", index= False)
+teams.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimTeams.csv", index= False)
+locations.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimLocations.csv", index= False)
+tournaments.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimTournaments.csv", index= False)
+dates.to_csv(r"/Users/michal/Desktop/footballDataTransformed/dimDates.csv", index= False)
