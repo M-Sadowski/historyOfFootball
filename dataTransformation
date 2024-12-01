@@ -96,7 +96,7 @@ results = results.merge(locations, left_on=['country', 'city'], right_on=['count
 results = results.merge(tournaments, left_on='tournament', right_on='tournament', how='left') \
                  .rename(columns={'tournamentId': 'tournamentId'}).drop(['tournament'], axis=1)
 
-results = results[['matchId', 'homeTeamId', 'awayTeamId', 'homeScore', 'awayScore', 'locationId', 'neutral',\
+results = results[['matchId', 'date', 'homeTeamId', 'awayTeamId', 'homeScore', 'awayScore', 'locationId', 'neutral',\
                    'tournamentId', 'shootouts', 'shootoutsWinnerId', 'shootoutsFirstShooterId']]
 results['homeScore'] = results['homeScore'].astype(int)
 results['awayScore'] = results['awayScore'].astype(int)
