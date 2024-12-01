@@ -1,0 +1,57 @@
+CREATE TABLE teams (
+	teamId VARCHAR(50) PRIMARY KEY,
+	team NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE locations (
+	locationId VARCHAR(50) PRIMARY KEY,
+	country NVARCHAR(255) NOT NULL,
+	city NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE tournaments (
+	tournamentId VARCHAR(50) PRIMARY KEY,
+	tournament NVARCHAR(255) NOT NULL
+);
+
+CREATE TABLE dates (
+	date DATETIME PRIMARY KEY,
+	year INT NOT NULL,
+	month INT NOT NULL,
+	day INT NOT NULL,
+	dayOfWeek NVARCHAR(10) NOT NULL
+);
+
+CREATE TABLE results (
+	matchId VARCHAR(50) PRIMARY KEY,
+	date DATE NOT NULL,
+	homeTeamId VARCHAR(50) NOT NULL,
+	awayTeamId VARCHAR(50) NOT NULL,
+	homeScore INT NOT NULL,
+	awayScore INT NOT NULL,
+	locationId VARCHAR(50) NOT NULL,
+	tournamentId VARCHAR(50) NOT NULL,
+	neutral BIT NOT NULL,
+	shootouts BIT NOT NULL,
+	shootoutsWinnerId VARCHAR(50),
+	shootoutsFirstShooterId) VARCHAR(50),
+	FOREIGN KEY (homeTeamId) REFERENCES teams(teamId),
+	FOREIGN KEY (awayTeamId) REFERENCES teams(teamId),
+	FOREIGN KEY (tournamentId) REFERENCES tournaments(tournamentId),
+	FOREIGN KEY (locationId) REFERENCES locations(locationId),
+	FOREIGN KEY (date) REFERENCES dates(date),
+	FOREIGN KEY (shootoutsWinnerId) REFERENCES teams(teamId),
+	FOREIGN KEY (shootoutsFirstShooterId) REFERENCES teams(teamId)	
+);
+
+CREATE TABLE goals (
+	goalId VARCHAR(50) PRIMARY KEY,
+	date DATETIME NOT NULL,
+	matchId VARCHAR(50) NOT NULL,
+	teamId VARCHAR(50) NOT NULL,
+	scorer NVARCHAR(255) NOT NULL,
+	minute INT NOT NULL,
+	ownGoal BIT NOT NULL,
+	penalty BIT NOT NULL,
+	FOREIGN KEY (matchId) REFERENCES results(matchId)
+);
